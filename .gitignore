@@ -1,0 +1,11 @@
+node_modules
+bower_components
+fonts
+dist 2
+*.log
+.editorconfig
+.jshintrc
+assets
+audio
+BensonHedgesGame.sublime-project
+BensonHedgesGame.sublime-workspace
