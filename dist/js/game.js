@@ -606,6 +606,11 @@ GameOver.prototype = {
       this.back.anchor.setTo(0.5, 0.5);
       this.back.inputEnabled = true;
 
+      
+      // Add Footer
+      this.footer = this.game.add.sprite(0, 0, 'footer');
+      this.footer.alignIn(this.back, Phaser.BOTTOM_CENTER);
+
 
       this.text_1 = this.game.add.text(this.game.width/2, 220, '¡EXCELENTE JUEGO!', this.game.font_style);
       this.text_2 = this.game.add.text(this.game.width/2, 340, 'TU PUNTAJE FINAL ES:', this.game.font_style);
