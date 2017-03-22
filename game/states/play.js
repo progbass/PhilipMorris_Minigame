@@ -16,6 +16,7 @@
       var scope = this;
 
       // Reset Properties
+      this.debug = false;
       this.gameInit = false;
       this.hero_dragged = false;
       this.loop_spawner = 0;
@@ -60,7 +61,7 @@
       this.hero.anchor.setTo(0.5, 0.5);
       this.hero.scale.setTo(0.9, 0.9);
       this.game.physics.arcade.enable(this.hero);
-      this.hero.body.setSize(this.hero.body.width - 17, this.hero.body.height - 160, 8, 10);
+      this.hero.body.setSize(this.hero.body.width - 17, this.hero.body.height - 170, 8, 10);
       this.hero.body.collideWorldBounds = true;
       this.hero.body.bounce.setTo(1,1);
       //this.hero.body.velocity.x = 400; //this.game.rnd.integerInRange(-250,250);
@@ -299,8 +300,18 @@
       this.hero_dragged = false;
     },
 
-    update: function() {
 
+    render: function(){
+      if(this.debug){
+        this.coinsGroup.forEachAlive(function(_target){
+          this.game.debug.body(_target);
+        }, this);
+        this.game.debug.body(this.hero);
+      }
+    },
+
+
+    update: function() {
 
       /////////////////////////////////////
       /// HERO DRAG
@@ -475,6 +486,7 @@
           // Free Grid Slot
           this.grid.slots_available[coin.slotIndex] = true;
         }, this); 
+
         // Add coin to Group
         this.coinsGroup.add(coin);
 
