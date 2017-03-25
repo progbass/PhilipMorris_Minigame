@@ -1,4 +1,4 @@
-Coin = function (game, _slot, _x, _y) {
+Coin = function (game, _slot, _x, _y, _frame) {
 	Phaser.Sprite.call(this, game, _x, _y, 'coin');
 	var scope = this;
 
@@ -24,14 +24,14 @@ Coin = function (game, _slot, _x, _y) {
 	this.xvel = 0;
 
     // 
-    this.randomize(_slot);
+    this.randomize(_slot, _frame);
 };
 
 Coin.prototype = Object.create(Phaser.Sprite.prototype);
 Coin.prototype.constructor = Coin;
 Coin.prototype.create = function () {};
 
-Coin.prototype.randomize = function(_slot){
+Coin.prototype.randomize = function(_slot, _frame){
     this.slotIndex = _slot;
 	this.scale.x = this.scale.y = 1;
 	this.yvel =  2 + (this.game.rnd.frac() * (this.game.level_speed * 1.85));
@@ -46,8 +46,11 @@ Coin.prototype.randomize = function(_slot){
     this.events.onInputDown.removeAll();
     this.events.onInputDown.add(this.onDown, this);
 	
-    // 
-    this.randomFrame();
+    //
+    if(_frame != undefined)
+    	this.fixFrame(_frame, 0);
+   	else
+    	this.randomFrame();
     //this.game.add.tween(this.scale).from( { x: 0, y: 0 }, 980, Phaser.Easing.Elastic.Out, true);
     
     //
@@ -115,7 +118,7 @@ Coin.prototype.setupFrame = function(_label) {
 	switch(this.frame){
 		case 0:
 			var precios = [{tint: 0xff0000, label: '$41*'}, {tint: 0x00ff00, label: '$61*'}, {tint: 0x0000ff, label: '$55*'}, {tint: 0xff00ff, label: '$38*'}];
-			var precio_random = _label ? _label : Math.round(this.game.rnd.integerInRange(0, precios.length-1));
+			var precio_random = _label != undefined ? _label : Math.round(this.game.rnd.integerInRange(0, precios.length-1));
 			this.label.text = precios[precio_random].label;
 			this.label2.text = '*PRECIO SUGERIDO';
 			if(precio_random != 0){
@@ -159,6 +162,8 @@ Coin.prototype.randomFrame = function(){
 
 Coin.prototype.fixFrame = function(_frame, _label) {    
 	// 
+	
+    console.log('asdasdasd')
     this.frame = _frame;
     this.setupFrame(_label);
 };

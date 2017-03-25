@@ -10,11 +10,11 @@ Features.prototype = {
       this.shop = this.game.add.sprite(0, 0, 'shop');
 
       //this.icon0.scale.setTo(.87, .87);
-      this.icon1 = new Coin(this.game, 0, 590, 510);
+      this.icon1 = new Coin(this.game, 0, 590, 510, 0);
       this.game.add.existing(this.icon1);
       this.icon1.scale.setTo(1.25, 1.25);
       this.icon1.static = true;
-      this.icon1.fixFrame(0, 0);
+      //this.icon1.fixFrame(0, 0);
       this.icon2 =  this.game.add.sprite(860, 340, 'coin');
       this.icon2.frame = 1;
       this.icon2.anchor.setTo(.5, .5);
