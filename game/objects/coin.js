@@ -162,8 +162,6 @@ Coin.prototype.randomFrame = function(){
 
 Coin.prototype.fixFrame = function(_frame, _label) {    
 	// 
-	
-    console.log('asdasdasd')
     this.frame = _frame;
     this.setupFrame(_label);
 };

@@ -62,7 +62,7 @@ var fx_state, fx_good, fx_bad, fx_seconds;
 WebFontLoader.load({
   custom: {
     families: ['Neutra Text', 'Neutra Text Bold'],
-    urls: ['../css/styles.css']
+    urls: ['./css/styles.css']
   },
 
   // Update status flag and attempt to init Game
@@ -204,6 +204,7 @@ var initGame = function(){
   // PLAY NEXT SCENE
   ///////////////////////////
   game.state.start('boot');
+
 
 };
 
@@ -373,8 +374,6 @@ Coin.prototype.randomFrame = function(){
 
 Coin.prototype.fixFrame = function(_frame, _label) {    
 	// 
-	
-    console.log('asdasdasd')
     this.frame = _frame;
     this.setupFrame(_label);
 };
@@ -445,6 +444,8 @@ Boot.prototype = {
 		this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.game.scale.pageAlignVertically = true;
 		this.game.scale.pageAlignHorizontally = true;
+		this.game.scale.setResizeCallback(this.adjust, this);
+		this.adjust();
 		this.game.scale.refresh();
 
 
@@ -459,7 +460,23 @@ Boot.prototype = {
 		// PLAY NEXT SCENE
 		///////////////////////////
 	    this.game.state.start('preload');
-	}
+	},
+
+
+
+   adjust: function() {
+   	// game holder size
+    var divgame = document.getElementById("benson-hedges");
+    divgame.style.width = window.innerWidth + "px";
+    divgame.style.height = window.innerHeight + "px";
+
+    // Place 'close' button
+    var close_btn = document.getElementById("btn_close");
+    var game_outter_bounds = (this.game.canvas.offsetLeft + this.game.canvas.offsetWidth) - close_btn.offsetWidth ;
+    close_btn.style.left = (game_outter_bounds - 30) + "px";
+	
+	this.game.scale.refresh();
+  }
 };
 
 // EXPORT MODULE

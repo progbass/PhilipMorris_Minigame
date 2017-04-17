@@ -32,7 +32,7 @@ var fx_state, fx_good, fx_bad, fx_seconds;
 WebFontLoader.load({
   custom: {
     families: ['Neutra Text', 'Neutra Text Bold'],
-    urls: ['../css/styles.css']
+    urls: ['./css/styles.css']
   },
 
   // Update status flag and attempt to init Game
@@ -174,6 +174,7 @@ var initGame = function(){
   // PLAY NEXT SCENE
   ///////////////////////////
   game.state.start('boot');
+
 
 };
 

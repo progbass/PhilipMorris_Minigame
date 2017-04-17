@@ -1,22 +1,3 @@
-@font-face {
-	font-family: 'Gotham Rounded';
-	src:	url('../fonts/GothamRounded-Bold.eot');
-	src:	url('../fonts/GothamRounded-Bold.eot?#iefix') format('embedded-opentype'),
-			url('../fonts/GothamRounded-Bold.woff') format('woff'),
-			url('../fonts/GothamRounded-Bold.ttf') format('truetype');
-	font-weight: bold;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Gotham Rounded Book';
-	src:	url('../fonts/GothamRounded-Book.eot');
-	src:	url('../fonts/GothamRounded-Book.eot?#iefix') format('embedded-opentype'),
-			url('../fonts/GothamRounded-Book.woff') format('woff'),
-			url('../fonts/GothamRounded-Book.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
 
 @font-face {
 	font-family: 'Neutra Text';
@@ -43,7 +24,7 @@ body {
   	background-color: #2067a5;
   	margin: 0; padding:  0; border:  none;
 
-  	font-family: 'Gotham Rounded';
+  	font-family: 'Neutra Text';
     font-weight: bold;
     font-style: normal;
 } 
